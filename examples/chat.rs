@@ -71,7 +71,7 @@ async fn handle_client(state: Arc<State>, addr: SocketAddr, stream: TcpStream) -
     let message = Arc::new(Message::user_joined(&peer.username));
     info!("{}", message);
     state.broadcast(addr, message).await;
-    
+
     while let Some(line) = peer.stream.next().await {
         let line = match line {
             Ok(line) => line,
